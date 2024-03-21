@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="corporate.css">
+    <title>Corporate Events</title>
+   
+</head>
+<body>
+<header>
+    <nav class="navbar">
+        <h2 class="eventmgmt">
+            <a href="homepage.html">SkyEvents <img src="logo.png" alt="Logo"></a>
+        </h2>
+        <ul class="all-links">
+            <li><a href="homepage.html">Home</a></li>
+
+            <!-- Updated dropdown structure -->
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Services <span class="caret"></span></a>
+                <ul class="dropdown-content">
+                    <li><a href="services.html">Corporate Event</a></li>
+                    <li><a href="personalised.html">Personalised Event</a></li>
+                    <li><a href="community_carnival.html">Community Carnival</a></li>
+                    <li><a href="weddingevent.html">Wedding </a></li>
+                </ul>
+            </li>
+
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+</header>
+<header>
+    <h1><i>CORPORATE EVENTS</i></h1>
+    <p>Bringing Business Excellence Together</p>
+</header>
+
+<section>
+    <div class="event-box" onclick="openModal('Tech Symposium', 'Explore the latest technological innovations and network with industry leaders.')">
+        <img class="event-image" src="tech symposium 2.jpeg" alt="Tech Symposium">
+        <h2>Tech Symposium</h2>
+        <p>Explore the latest technological innovations and network with industry leaders.</p>
+    </div>
+
+    <div class="event-box" onclick="openModal('Leadership Forum', 'Gain insights from top executives and leadership experts on effective business strategies.')">
+        <img class="event-image" src="leadership forum.jpg" alt="Leadership Forum">
+        <h2>Leadership Forum</h2>
+        <p>Gain insights from top executives and leadership experts on effective business strategies.</p>
+    </div>
+
+    <div class="event-box" onclick="openModal('Global Summit', 'Connect with professionals from around the world and explore global business opportunities.')">
+        <img class="event-image" src="global summit.jpeg" alt="Global Summit">
+        <h2>Global Summit</h2>
+        <p>Connect with professionals from around the world and explore global business opportunities.</p>
+    </div>
+
+    <div class="event-box" onclick="openModal('Innovation Expo', 'Showcasing groundbreaking innovations and fostering collaborations for a brighter future.')">
+        <img class="event-image" src="innovation expo.jpeg" alt="Innovation Expo">
+        <h2>Innovation Expo</h2>
+        <p>Showcasing groundbreaking innovations and fostering collaborations for a brighter future.</p>
+    </div>
+</section>
+
+<div id="eventModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalDescription"></p>
+    </div>
+</div>
+
+<footer>
+    <p>&copy; 2024 Corporate Events Hub</p>
+</footer>
+
+<script>
+    function openModal(title, description) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalDescription').innerText = description;
+        document.getElementById('eventModal').style.display = 'flex';
+    }
+
+    function closeModal() {
+        document.getElementById('eventModal').style.display = 'none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target === document.getElementById('eventModal')) {
+            closeModal();
+        }
+    };
+</script>
+<script>
+    function hello() {
+        let xhr = new XMLHttpRequest();
+
+        xhr.open('GET', 'adi.txt', true);
+
+        xhr.onload = function() {
+            if (this.status === 200) {
+                console.log("Data fetched successfully!");
+                console.log(this.response);
+            } else {
+                console.log("Error: Something went wrong!");
+            }
+        };
+
+        xhr.send();
+    }
+
+    window.onload = function() {
+        hello();
+    };
+</script>
+
+</body>
+</html>

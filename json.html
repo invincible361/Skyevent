@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Create JSON Data</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-controller="myCtrl">
+
+    <div>
+        <h2>User Input</h2>
+        <form>
+            <label>Name:</label>
+            <input type="text" ng-model="user.name"><br>
+            <label>Age:</label>
+            <input type="number" ng-model="user.age"><br>
+            <label>City:</label>
+            <input type="text" ng-model="user.city"><br>
+            <label>Gender:</label>
+            <input type="text" ng-model="user.gender"><br>
+            <label>Job:</label>
+            <input type="text" ng-model="user.job"><br>
+            <button ng-click="addUser()">Add User</button>
+        </form>
+    </div>
+
+    <div>
+        <h2>Generated JSON Data</h2>
+        <pre>{{ jsonData | json }}</pre>
+    </div>
+
+    <script>
+        var app = angular.module('myApp', []);
+
+        app.controller('myCtrl', function($scope) {
+            $scope.users = [];
+            $scope.user = {};
+
+            $scope.addUser = function() {
+                $scope.users.push({
+                    name: $scope.user.name,
+                    age: $scope.user.age,
+                    city: $scope.user.city,
+                    gender: $scope.user.gender,
+                    job: $scope.user.job
+                });
+                $scope.user = {}; // Clear user input
+                $scope.generateJSON();
+            };
+
+            $scope.generateJSON = function() {
+                $scope.jsonData = angular.toJson($scope.users, true);
+            };
+        });
+    </script>
+</body>
+</html>

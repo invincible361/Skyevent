@@ -1,0 +1,122 @@
+I apologize for the inconvenience. Let's ensure that the function is being called correctly and the data is being stored properly. Here's a revised version of the script with added debug messages to help diagnose the issue:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Us</title>
+  <link rel="icon" href="logo.png" type="image/x-icon">
+
+  <link rel="stylesheet" type="text/css" href="aboutus_css.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    header img {
+      max-width: 50px;
+      height: auto;
+      margin-right: 10px; 
+    }
+    .icon {
+      margin-right: 5px;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    textarea {
+      color: black; /* Set the color to black */
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar">
+      <h2 class="eventmgmt"><a href="homepage.html">SkyEvents <img src="logo.png" alt="Logo"></a></h2>
+
+      <div class="eventmgmt">
+      </div>
+      <ul class="all-links">
+        <li><a href="homepage.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="content">
+    <div class="contact-details">
+      <h2><i><u>Contact Details</u></i></h2>
+      <ul>
+        <li><i class="fas fa-envelope icon"></i><strong>Email:</strong> Skyevent@gmail.com</li>
+        <li><i class="fas fa-map-marker-alt icon"></i><strong>Address:</strong> SG PALYA, Bengaluru, Karnataka</li>
+        <li><i class="far fa-clock icon"></i><strong>Timing:</strong> Mondays to Saturdays<br> (9:00 AM - 10:00 PM)</li>
+      </ul>
+    </div>
+
+    <div class="feedback-form">
+      <h2><u><i>Send Us a Message</u></i></h2>
+      <form onsubmit="return saveFormData()">
+        <div class="form-group">
+          <label for="name"><i class="fas fa-user icon"></i>Name:</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+      
+        <div class="form-group">
+          <label for="email"><i class="fas fa-envelope icon"></i>Email:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      
+        <div class="form-group">
+          <label for="phone"><i class="fas fa-phone icon"></i>Phone:</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+      
+        <div class="form-group">
+          <label for="message"><i class="fas fa-comment icon"></i>Message:</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+      
+        <div class="form-group">
+          <input type="submit" value="Submit" class="btn">
+        </div>
+      
+        <div class="additional-section">
+          <h3>Explore More on Our Website</h3>
+          <p>Discover exciting events, latest news, and much more!</p>
+        </div>
+      </form>      
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Event Management Company. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function saveFormData() {
+      var name = document.getElementById('name').value;
+      var email = document.getElementById('email').value;
+      var phone = document.getElementById('phone').value;
+      var message = document.getElementById('message').value;
+
+      // Save form data to local storage
+      localStorage.setItem('name', name);
+      localStorage.setItem('email', email);
+      localStorage.setItem('phone', phone);
+      localStorage.setItem('message', message);
+
+      // Log the saved data for confirmation
+      console.log("Form data saved to local storage.");
+      console.log("Name: ", localStorage.getItem('name'));
+      console.log("Email: ", localStorage.getItem('email'));
+      console.log("Phone: ", localStorage.getItem('phone'));
+      console.log("Message: ", localStorage.getItem('message'));
+
+      // Return false to prevent form submission via HTTP POST
+      return false;
+    }
+</script>
+
+</body>
+</html>

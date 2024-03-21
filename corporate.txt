@@ -1,0 +1,8 @@
+{
+  "title": "Annual Corporate Conference",
+  "description": "Join us for our annual corporate conference where we discuss industry trends, network with professionals, and showcase our latest innovations.",
+  "date": "2024-06-15",
+  "location": "Grand Convention Center",
+  "speaker": "John Doe",
+  "registration_link": "https://example.com/register"
+}

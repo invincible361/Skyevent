@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Agenda Management System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="login_css.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+</head>
+<style>
+    .navbar {
+        background-color: #007bff; 
+        color: #0c0b0b; 
+        padding: 20px;
+        width: 100%;
+        margin: 0; 
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .all-links {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+
+    .all-links li a {
+        text-decoration: none;
+        color: #fff; 
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #4c1fdf;
+        min-width: 160px;
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown-content a:hover {
+        background-color: #928f8f;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+</style>
+<body ng-controller="myCtrl">
+    <header>
+        <nav class="navbar">
+            <img src="logo.png" alt="Logo" class="logo">
+            <h2 class="eventmgmt"><a href="homepage.html">SkyEvents</a></h2>
+            <ul class="all-links">
+                <li><a href="homepage.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Services</a>
+                    <div class="dropdown-content">
+                        <a href="personalised.html">Personalised Event</a>
+                        <a href="weddingevent.html">Wedding Event</a>
+                        <a href="community_carnival.html">community carnival</a>
+                    </div>
+                </li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+    <form action="#" id="login-form">
+        <div class="heading">Login to SkyEvents</div><br>
+        <div class="left">
+          <label for="email">Email</label> <br />
+          <input type="email" name="email" id="email" /> <br />
+          <label for="password">Password</label> <br />
+          <input type="password" name="password" id="pass" /> <br />
+          <input type="submit" value="Login" />
+        </div>
+        <div class="right">
+            <div class="connect">Connect with</div>
+            <a href="https://www.facebook.com" class="facebook">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAMAAzAMBEQACEQEDEQH/xAAcAAEAAgIDAQAAAAAAAAAAAAAABgcBBAIDBQj/xABHEAABBAEBBAUGCwQJBQEAAAAAAQIDEQQFBhIhMQdBUXGxEyJhc4HBFCMyNTZCU5GSodFScpPSFRckJjNUYoLCQ1Xh8PEW/8QAGgEBAAIDAQAAAAAAAAAAAAAAAAUGAQIEA//EADQRAQABAgMECAUEAwEBAAAAAAABAgMEBRESITFREyIyNEGBodEVYXGxwRQzUpEjQvDhJP/aAAwDAQACEQMRAD8AvEAAAAAAGpn6hjafF5XLmbGzqvmvch6W7Nd2rSiNXldvW7NO1XOiIaptvK5Vj0yJGp9rKnH2J+pL2MqiN92fKEHiM6nhZp859kXzc7Kz5PKZmRJMvVvLwTuTkhK2rNu1GlEaIW9euXp1uVatfgejyLMhYCwM2AsBZgY60XrTkvYNB7Wm7UanguRFn+ERpzZMt/nz8Tiv4Czc36aT8khh8yxNqeO1Hz90v0nazA1BWxyO+DTr9STkvcpDX8vu2utG+E9hszs3907p5Pe3us4Uk5gAAAAAAAAAADi9a4gRXX9r48RXY+mo2adOCvX5DP1Uk8JltVzSq5uj1Q2MzWm1rRa31eiDZeZkZkyzZcz5pF+s5er0diegnrdui3Ts0RpCuXLtd2dq5Osui6N2hZkLAWAsBYCwFgLAWAsAq3zMD3ND2nzdKVI5FWfF5eTcvFv7q+7kcGJy+3ejWndKRwmZXbE6TOtPL/33WBpep42pwpNiy7yfWbfFq+lCv3rFdmrZrhZ7GIt36dq3L0Dye4AAAAAAAB1zvZHEr5Ho1jeKqq0iGYiZnSOLFUxEayrzafaiTOc7D09zmYqcHSItLJ+ieJP4LL4t9e5HW5clZx+Zzdmbdqerz5owipXDkSyH003FgLAWAsBYCwFgLAWAsBYCwFgLA2cDOyNOyW5GLKrJEXjScFTsVOs8b1mi7Ts1xrD2sXrlivbtzvWVs5r2PrMSVUeSxPjIr5elO1CtYvCV4erfvjmteCxtGJp5VcntnI7gAAAAAOEjmoxVc5EROKqvUPoxMxpvVttdtGupSLh4blTEYvnOTh5Vf0LHgMF0MdJXHW+ysZjj5vT0duerz5/+I2q9hJxGiJAAAAAAAAAZAxG8DIADGoGQMAADtxcibEyWZGPIscsa211/+2hpct0XKZpqjc3tXK7VUVUTvWjs1rsOs4u/wZkRpUsd8vSnoKti8LVh69J4eC3YLGU4qjXx8YezaHK7WQAADC8gINt1rytVdLw30qpeQ9OrsanvJrK8HE/5q4+kflA5rjZj/BRP1n8IQnYTiADIAAAAAAABgTiqIiKqrwRE5qpjXxZiNeCQ6XsfqmciOnamJGvH43i78KcvbRHX8zs291O/6JOxlV+7GtfVhIsbYLAYn9oyJ5V70b4EfXm96ezEQkqMlsRHWmZbabFaKn/Rl/jOPL4piefo9fhGE/j6y4v2J0ZU82KZq9qTKZjNMTHj6HwjC+ET/bVl2BwVVViy8ll9VtVPA9Kc3vf7REvGrJLMzrEzCLbTaD/QUkDfhHlWzbyt82lbVfqSmCxn6mJnZ00ROOwX6WYja11eMdzhAHcGG1pmoz6Zmx5eMtPYvFqrwenW1Twv2Kb1E0VPexfqsXIuUf0trSs+DUcKPLxnXG9OS82r1ovpQqd21VauTRVxhcrF6m9bi5TwluItnm9WQAHlbR6szSdMknVfjF82JO1x04TDzfuxT4eLlxeJjD2prnj4KikkfJI6SRyue5yuc5V4uVS2U0xTGkKdVVNUzM8ZYs2algLAWAsBYCwFhl24uPNl5EePjRq+WR261vaaXK6aKZqq4N7duq5VFNMb5Wds5szi6RE2RyJNlqnnSL9X0NKxisdXiJ3bqVqweAow0b99XN7zUVOanE73IAAAAQLpOX47Tu6X/iTmTcK/L8q9nnat+f4QmybQZYCwFhnRJdhtZ/o/UEw5nVj5C0l8mv6l9vL7iLzPC9Lb26Y3x9kpleL6K5sVcKlmtK4tDIBeQFVbb6quoaw6FjrgxbjbS8Fd9Zfd7CzZbh+isxVPGr/oVXNMR0t6aY4U/fxR6ySRpYCwFgLAWAsBYCwLG2A0ZMbCTUJm/HTp5l/VZ1V3lbzTEzXc6KOELLlWFi3b6WrjP2S9EpSLS7IAAAAAQHpP/wAbTe6T/iTuTdmvy/Kv532rfn+EHsm0GWAsBYBFW0rnfUYIW3sjq39LaNFLI65418nN+8nX7UpfaVPHWOgvzTHDwW/AYjp7MVTx8XtItnI7Xm7Q6kmmaPk5X12tpn7y8EPfC2umvU0f258Ve6GzVWpreW1VVtV5+kuGimalmWCwFgLAWAsBYCwO/BxnZudj4rec8rY7TqteKnndr6OiqvlGr1s2+kuU0c50XbDEyGNkcbUaxjUa1qdSIlIhTKpmqqapXWmIpjSHYYbAGFWgOEkzImq6RzWNTm5y0iCImZ0hiZiN8vNk2k0aNytfqOOjk5pvHTTg8RVGsUS5pxuHpnSa4cf/ANTof/coPxG36HE/wlj9dhv5whnSBqeFqUmCuDkxzeTSTf3V5Xu14Evldi7Zivbp04flC5tftXpo6OrXTX8eyJWSyJLDBYCwFgSno91FcXWHYjnVFlNpE/1Jy95FZtZ27O3HGEtlF7YvbHhKzm8itrMgfSZnObHiYLVWnqsj69HBPEm8mtdaq5KEzm71abaBE+gNAGgDQBoA0AaANAGgDR7uw7PK7UYVpaN33fc1f1ODMp0w1Xl93dlka4qnz+y3ESiqrYyAA4vWku0RE6wwqHabXcnV86VFkcmLG9WxRpypOFr2qpbMFhKbFETp1pVPG4qq9cmNerDxTtcTNgYv/wCmNABoGTQBoA0AaO7EyH4mVFkx3vRPR/D0KaXKIrommfFvbq2K4rjwXfjSJNAyVq217UcntKVVTszNK60ztRqqnbzKXI2nyWpxbA1safda+JaMst7GGj571YzOvbxM/Lcj9kgjiwFgLAWAsBYCwFgSPo9X+80Xqn+4js17tPkk8qj/AOnyWwVdZwABr56q3CncnNI3Kn3G9uNaoaV9mVFMXzE7i7TxUhysBYCwFgLAWAsBYGLsQLf2IyVytmcNzvlMRY1/2rXuKlmFvYxNUef9rbl9zbw1Mz9P6VXrUvl9Z1CVVveyZFRfRvLRZ8PTs2aI+UK1iZ2r1c/OWlZ7vAsBYCwFgLAWAsBYEl6PPpPF6p/ghG5r3afrCTyrvPktkq6zAADW1L5vyfVO8De324aXOzKiWr5qdxeJ4qSzZgLAWAsBYCwFgLAWBYPR5qTMbRZo5F5ZLlTjyTdb/wCSAzWzNd6Jjl7p/KrsU2Jiefsr+V+/LI/9p6u+9bJ6I0iIQVU6zMuFmWCwFgLAWAsBvInMyMb7e38zGgb7e38xoJN0dOR21EVfZP8ABCOzXus/WEllXefJbZVlmAAGtqXzfk+qd4G9vtw0udmVDNe3dS16i8TG9SYZ329v5mNGTfb2/mNBlHIvIBYCwFgLAWARQN/Ts92JC5iLVv3vyT9Dwu2YrnV02b/R06NCRNyV7P2XK37lPeJ1jVz1RpMw42ZYLAWAsBYCwJ30XRxyv1HyjGvpGVvNRa5kFnUzEUafNOZPETtaxyT/AOCwfYRfgQg9uvnKa2aeR8Ex/sIvwINuvnLOzTycmY8Mbt5kMbXdrWIhiapnjLGkR4O4w2AAGHJaceKAdPwXH+wi/Ahtt1c2Nmlj4Jj/AGEX4EG3Xzk2aeR8Fx/sIvwINuvnJs08lQbaTMl2oz/J7u5G5I0Rqct1qIv52WvL6ZjDUa+PuqmYVa4mrT/tzxLO1xlmQsBYCwFgbmFhvyYnPbyR1HjcuRROkui1Z6SNXHWWeR1jPi5bmVK32byjDztWaZ+UfZjERpeqj5y0z2eIAAAAAE/6KPl6l3R+8gs74Ueacyb/AH8lioQKbAAAAAAAAAHFy8zAoXUchcrUcvJqvLTvfXe5VLxZp2LVNPKIUy9O1dqq5zLXPR5gAAAAIoE/6PdLbm6NPK9OWU5qX+60g80vzbvREcvzKdyyzFdmZnn7I9t5jLi7VZi8mzbsre5UpfzRTtyyvbw1Py1hw5jb2cRV80fs73CWAsBYCwFgWB0Tr8ZqXdH7yCzvhR5pvJ+FfksZORApsAAAAAAAAAaOsz/BdKzJ7pWQPVF9NcD0sU7d2mn5vO7Xs0TKh7vj2l30U0sBYCwFgLAyi8QLi6P8ZcfZXE3vlS70qr27y2n5UVTM69rFVfLctOX0bGHpRrpWwlbJhag1qcUWF6/mnv8AvO7Jbu6q35uHN7fZuQr+yeQpYCwFgLAWBJ9iNpcPZ52WubFkSeWRu75FrVqr52qdpGZjgrmK2diY3c0jgMXbw+1txO9LP6y9G/ymofw4/wCcjfg1/wDlHr7JD4tY5T6e5/WZo3+U1D+HH/OPg1/+UevsfFrHKfT3ehoe2una3qDMHFx8xkrmq5FlYxG0nc5TwxOW3cPb6SqY0+Wvs97GPtX69imJ1SUj3aAAOueVsEL5XIqtY1XKic+BmmNqdGJnSNUOTpM0ZUv4JqP8OP8AnJb4Lf8A5R6+yM+LWOU+nuf1maN/lNQ/hx/zj4Nf/lHr7Hxaxyn093mbR7d6dqmjZOFi4+ayWZqNR0jGInP0OU6MLlV21eprrmNI+vs8MTmVq7aqopidZ/7mr+ydQpYCwFgLAWB2Y8T8meOCP5cr0Y3vXga11RTTNU+DaimaqopjxX7gwNxcOHHjREbExGIiehCkXK5rrmqfFcaKYppimPB5O2GmLqmgZWO1tyNb5SP95vE6MDe6HERU8MXa6WzNKkkXt7C4qmWAsBYCwFgLAAAJT0a/SuH1MnuI7Nu6z9YSOV948lwlUWQAAa2pfN+T6p3gb2+3DWrsy+fWfJTuL1PFTGTAWAsBYCwFgLAWBKujjTlzdoG5D2/FYrPKKq8t5eDSMza90djZ/kksss7d7a5Lfby4lWWMVOAFKbcaQuj67Mxjax8hVmhVOVLzT2L+VFuy7EdNYiZ4xun3VjHWOivTyngj9ne4iwFgLAWAsBYCwJT0afSyH1MnghG5t3WfrCRyzvHkuMqixgADW1L5vyfVO8De324a1dmXz21fNTuL1PFTWbAWAsBYCwFgLAWicVXkBcvR/oy6VoLHzN3cnKXy0iKnFqfVb7E/NVKjmWI6e/Ok7o3LPgLHQ2o14ykycDgdrIkRrbbQf6a0ZzIkvJgVZIfT/p9qHdgMV+nvRM9mXJjcP09uY8VLKitWncFulTsLdEwrExpxDLUAAAAAABKujP6WQ+pk8EI3Nu6z9YSOWd48lyFUWMAAa2p/N+T6p3gb2+3DWrsy+eW/JTuL1PFTmQwAAAAAADKS7BaGusaw2SVu9iYyo+Xscv1W+8jsyxUWLWlPGXfl+G6a5tTwhc7OBU1kcgAGFSkMCquknZpcPIXV8Jn9nmX49qJ/hu/a7l8e8smU43bp6Gud8cEHmOFmmekpjcgtk3v8URLFhgsMlhgsMlhgsMpX0Yr/AHth9TJ4IRmb91n6wkcs/f8AJcxVFiAAGrqfzdk+qd4G9vtw1q4S+eEXgncXtTpLDBYCwyWGCwyzYGxp+HkajmQ4mJGr5pHbqJ719CHlcuU2qJrrnSHpbtVXKopp4ry2a0aDQ9Mjw4ac5OMslfLf1qU7FYirEXZuVLRh7FNm3FEPWRKOd7gAAB05WPFk48kM0bXxyJuua5OCoZpqmmdqOLFVMVRpKl9s9mJdnszyke8/T5XL5KRUvcX9l369ZbMBjqcTRpV2o4+6uYzBzYq1p7KNki4SwFgLAWAsCV9GK/3uh9TJ4IRub91n6wkMs/f8lzlTWIAAaup/N2T6p3gb2+3DWvsy+dmrwTuL5Kns2YCwFgLAWBziZJNKyKFjpJHrutY1LVVMVVRTGsyzTTNU6QuLYXZNmhY/wjLa1+oTN89eqNP2U96lTx+PqxNWzT2Y9fmsmDwkWKdZ4yltEc7QAAAAANbUMPHz8R+LlxNkhkSnNchvRcqt1RVTxhrXRTXGzUprbDZHJ0CV00W9Np7neZLXGP0OrxLVgsxpxEaVTpV91fxeDqszrTvpRlV6+pSScBYCwFgLAlnRh9LofUyeCEZm/dZ+sJDLf3/JdBU1hAAGrqfzdk+qd4G9vtw1r7MvnRq+ancX2VRnizZhgsBYCwOzFx5svIZjY0T5ZnrTWNS1VTSuumimaqp0iG9FFVc6UxvW/sTsbFobW5eduzai5OacWxJ2N9PapVcdmFWInZo3U/dYMJg6bMaz2kxI13AAAAAAAAHXPG2aN0cjGvY5FRzXJaKImYnWOLExrulWe1fR29ivy9AbvN5uxL4p+5fgWDBZvwov/wB+6JxOXf7Wv6V5NG+KRzJGOY5q0rXtVFavYqKT1MxVvpQ9UTE6S4GWrAACXdF30uh9TJ4IRmb91nySOW/v+S6SprAAANXVPm7J9U7wN7XbhrX2ZfOTfkp3F9lUZ4hhhkAB7Gz2zmpa/OjcKJUhRakyHpTG/qvoQ5MVjLOGjrTv5RxdVjC3L87o3Lf2Z2Ywdnoax2eUyHf4mQ/5Tu7sT0FWxeNuYmrrcOSfw+GosR1eL3zkdAAAAAAAAAAAYUDxdf2Y0zXY/wC2Y6JNXmzx8Hp7ev2nVh8bew89Sd3J4XsNbvRpVCtNd6PNW07ekwWpnwJx8zhI3/b1+z7iwYfNrN3dX1Z9ERey+5Rvp3wh8kb45HRysdG9q05j2q1W96LyJWJ1jWEfVTNM6TDiGNEu6LvpfD6iT3EZm/dZ8khlv73kuoqafAAGpqvzdleqd4G9rtw1r7MvnFvyW9xfZVKWe7j3GDSXpaRoOp6y9G6fhSSsvjKqbrE/3Lw9nM5r+Ks2Y/yVeT3tYa7d7MLE2d6NcfH3J9alTJk5+RZwYnevNSDxOc3KurZjSOfilrGXU077m+U9ggjx4mRQRtjjYlNaxERETuIaqqap1mdZSMRERpDtMMgAAAAAf//Z" alt="Facebook" style="height: 20px;">
+            </a> <br />
+            <a href="https://twitter.com" class="twitter">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0_wps6UzXYBCYjh-8jgTPYiPXKRUj8XeWlQ&usqp=CAU" alt="Twitter" style="height: 20px;">
+            </a> <br />
+            <a href="https://plus.google.com" class="google-plus">
+                <img src="https://www.freepnglogos.com/uploads/google-logo-png/google-logo-png-google-icon-logo-png-transparent-svg-vector-bie-supply-14.png" alt="Google Plus" style="height: 20px;">
+            </a>
+            <div class="g-signin2" data-onsuccess="onSignIn" data-clientid="YOUR_CLIENT_ID.apps.googleusercontent.com"></div>
+        </div>
+        <div>
+            <p>Don't have an account? <a href="signup.html">Sign up</a></p>
+        </div>
+        
+      </form>  
+
+    <script>
+    var app = angular.module('myApp', []);
+
+    app.controller('myCtrl', function($scope) {
+        $scope.signedInUsers = [];
+
+        $scope.createUser = function() {
+            var email = $scope.user.email;
+            var password = $scope.user.password;
+
+            if (!email || !password) {
+                alert("Please fill in all fields.");
+                return;
+            }
+
+            var newUser = { email: email, password: password };
+            $scope.addSignedInUser(newUser);
+            $scope.sendDataToServer(newUser); // Sending data to server
+        };
+
+        $scope.addSignedInUser = function(user) {
+            console.log("User added:", user);
+            $scope.signedInUsers.push(user);
+            $scope.user = {};
+        };
+
+        $scope.sendDataToServer = function(userData) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'login.txt', true);
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send(JSON.stringify(userData));
+        };
+    });
+
+    function onSignIn(googleUser) {
+        // Your existing Google sign-in code
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    padding: 0;
+    /* background: url(http://cdn.backgroundhost.com/backgrounds/subtlepatterns/cartographer.png); */
+    font-family: 'Playfair Display', serif;
+}
+
+h1, p, a {
+    color: #ddd;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 54px;
+    font-weight: normal;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+footer {
+    margin-top: 20px;
+}
+
+#site {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    /* width: 40%; */
+    flex:1;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto;
+}
+
+#gallery .gallery-element {
+    grid-column: span 2;
+    overflow: hidden;
+    height: 250px;
+    color: #333;
+    text-decoration: none;
+    display: grid;
+    background-position: center;
+    background-size: cover;
+    transition: transform .5s;
+}
+
+#gallery .gallery-element h2 {
+    margin: 0;
+    padding: 30px;
+    font-size: 1.6em;
+    background: rgba(128, 118, 118, 0.75);
+    opacity: 5;
+    transition: opacity .5s;
+}
+
+#gallery .gallery-element:hover {
+    transform: scale(1.05);
+}
+
+#gallery .gallery-element:hover h2 {
+    opacity: 1;
+    
+}
+
+@media screen and (max-width: 850px) and (min-width: 500px) {
+    #gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+#gallery .gallery-element {
+    grid-column: span 2;
+    overflow: hidden;
+    height: 250px;
+    color: #333;
+    text-decoration: none;
+    display: grid;
+    background-position: center;
+    background-size: cover;
+    transition: transform .5s;
+    border-radius: 5px;
+
+    margin: 10px; /* Add space between photos */
+}
+
+#gallery .gallery-element h2 {
+    margin: 0;
+    padding: 30px;
+    font-size: 1.6em;
+    background: rgba(128, 118, 118, 0.75);
+    opacity: 0.5; /* Reduce opacity */
+    transition: opacity .5s;
+    border-radius: 5px;
+}
+#gallery .gallery-element {
+    grid-column: span 2;
+    overflow: hidden;
+    height: 300px; /* Increase the height of the gallery element */
+    color: #333;
+    text-decoration: none;
+    display: grid;
+    background-position: center;
+    background-size: cover;
+    transition: transform .5s;
+    border-radius: 5px;
+    margin: 10px; /* Add space between photos */
+}
+
+#gallery .gallery-element h2 {
+    margin: 0;
+    padding: 30px;
+    font-size: 1.6em;
+    background: rgba(128, 118, 118, 0.75);
+    opacity: 0.5; /* Reduce opacity */
+    transition: opacity .5s;
+    border-radius: 5px;
+}

@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corporate Events Management</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #001f3f; /* Navy Blue */
+            color: #fff;
+        }
+
+        header {
+            background-color: #516d8c; /* Updated color for consistency */
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .navbar a {
+            text-decoration: none;
+            color: #fff;
+            padding: 20px 10px;
+            overflow: hidden;
+        }
+
+        .navbar a:hover {
+            color: #ddd;
+        }
+
+        .navbar img {
+            max-width: 50px;
+            height: auto;
+            margin-right: 10px;
+        }
+
+        section {
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
+            padding: 120px 20px 20px;
+            flex-wrap: wrap;
+        }
+
+        .event-box {
+            text-align: left;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            margin: 20px;
+            width: 300px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .event-box:hover {
+            transform: scale(1.05);
+        }
+
+        h2 {
+            color: #001f3f; /* Navy Blue */
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        .event-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            max-width: 80%;
+            text-align: left;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #001f3f; /* Navy Blue */
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #001f3f; /* Navy Blue */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Corporate Events Management</h1>
+    </header>
+
+    <section>
+        <div class="navbar">
+            <h2 class="eventmgmt">
+                <a href="homepage.html">SkyEvents <img src="logo.png" alt="Logo"></a>
+            </h2>
+            <ul class="all-links">
+                <li><a href="homepage.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="corporateevents.html" class="dropdown-toggle" data-toggle="dropdown">Services <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="services.html">Corporate Event</a></li>
+                        <li><a href="personalised.html">Personalised Event</a></li>
+                        <li><a href="community_carnival.html">Community Carnival</a></li>
+                        <li><a href="weddingevent.html">Wedding </a></li>
+                    </ul>
+                </li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <section>
+        <div class="event-box" onclick="openModal('Tech Symposium', 'Explore the latest technological innovations and network with industry leaders.')">
+            <img class="event-image" src="tech symposium 2.jpeg" alt="Tech Symposium">
+            <h2>Tech Symposium</h2>
+            <p>Explore the latest technological innovations and network with industry leaders.</p>
+        </div>
+    
+        <div class="event-box" onclick="openModal('Leadership Forum', 'Gain insights from top executives and leadership experts on effective business strategies.')">
+            <img class="event-image" src="leadership forum.jpg" alt="Leadership Forum">
+            <h2>Leadership Forum</h2>
+            <p>Gain insights from top executives and leadership experts on effective business strategies.</p>
+        </div>
+    
+        <div class="event-box" onclick="openModal('Global Summit', 'Connect with professionals from around the world and explore global business opportunities.')">
+            <img class="event-image" src="global summit.jpeg" alt="Global Summit">
+            <h2>Global Summit</h2>
+            <p>Connect with professionals from around the world and explore global business opportunities.</p>
+        </div>
+    
+        <div class="event-box" onclick="openModal('Innovation Expo', 'Showcasing groundbreaking innovations and fostering collaborations for a brighter future.')">
+            <img class="event-image" src="innovation expo.jpeg" alt="Innovation Expo">
+            <h2>Innovation Expo</h2>
+            <p>Showcasing groundbreaking innovations and fostering collaborations for a brighter future.</p>
+        </div>
+    </section>
+    
+    <!-- <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+    </section> -->
+    
+    <!-- <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div> -->
+    
+    <footer>
+        <p>&copy; 2024 Corporate Events Hub</p>
+    </footer>
+    
+    <script>
+        function openModal(title, description) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('eventModal').style.display = 'flex';
+        }
+    
+        function closeModal() {
+            document.getElementById('eventModal').style.display = 'none';
+        }
+    
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('eventModal')) {
+                closeModal();
+            }
+        };
+    </script>        <div class="event-box" onclick="openModal('Loading...', 'Please wait while we fetch data')">
+            <h2>Loading...</h2>
+            <p>Please wait while we fetch data</p>
+        </div>
+    </section>
+
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Corporate Events Management</p>
+    </footer>
+
+    <script>
+        function openModal(title, description) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('eventModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('eventModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('eventModal')) {
+                closeModal();
+            }
+        };
+
+        // AJAX request
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                var data = JSON.parse(this.responseText);
+                openModal(data.title, data.description);
+            } else if (this.readyState == 4) {
+                console.error("Error fetching data:", this.statusText);
+                openModal("Error", "Failed to fetch data. Please try again later.");
+            }
+        };
+        xhttp.open("GET", "corporate.txt", true);
+        xhttp.send();
+        xhttp.open("GET", "corporate.txt", true);
+        xhttp.send();
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,148 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #001f3f; /* Navy Blue */
+    color: #fff;
+}
+
+header {
+    background-color: #516d8c; /* Updated color for consistency */
+    color: #fff;
+    /* position: relative; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* z-index: ;  */
+    padding: 20px 0; 
+    text-align: center;
+    float: left;
+}
+
+.navbar {
+display: flex;
+align-items: center;
+overflow: hidden;
+max-width: auto;
+margin: 0 auto;
+padding: 0 20px;
+float: left;
+}
+
+.navbar a {
+text-decoration: none;
+color: #fff;
+padding: 20px 10px;
+display: flex;
+float: left;
+white-space: nowrap; /* Ensure text does not wrap */
+}
+
+.navbar a:hover {
+color: #ddd;
+}
+
+header img {
+max-width: 50px;
+height: auto;
+margin-right: 10px;
+}
+
+
+section {
+    display: flex;
+    justify-content: space-around;
+    align-items: stretch;
+    padding: 120px 20px 20px; /* Adjusted padding to accommodate fixed header */
+    flex-wrap: wrap;
+}
+
+.event-box {
+    text-align: left;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    margin: 20px;
+    width: 300px;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.event-box:hover {
+    transform: scale(1.05);
+}
+
+h2 {
+    color: #001f3f; /* Navy Blue */
+    margin-bottom: 10px;
+}
+
+p {
+    color: #666;
+}
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.event-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    max-width: 80%;
+    text-align: left;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #001f3f; /* Navy Blue */
+    cursor: pointer;
+}
+
+footer {
+    background-color: #001f3f; /* Navy Blue */
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

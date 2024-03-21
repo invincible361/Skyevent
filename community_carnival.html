@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Carnivals</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffea00; /* Vibrant Yellow */
+            color: #333;
+        }
+
+        header {
+            background-color: #ff6f61; /* Coral Red */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            font-size: 36px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px; /* Adjust the height as needed */
+        }
+
+        .all-links {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .all-links li {
+            margin-right: 20px;
+        }
+
+        .all-links li:last-child {
+            margin-right: 0;
+        }
+
+        .all-links li a {
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .all-links li a:hover {
+            text-decoration: underline;
+        }
+
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu li {
+            padding: 12px 16px;
+            display: block;
+        }
+
+        .dropdown-menu li a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: #f2f2f2;
+        }
+
+        section {
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
+            padding: 50px;
+            flex-wrap: wrap;
+        }
+
+        .event-box {
+            text-align: left;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            margin: 20px;
+            width: 300px;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .event-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            color: #ff6f61; /* Coral Red */
+            margin-bottom: 10px;
+            font-size: 24px;
+        }
+
+        p {
+            color: #444;
+        }
+
+        .event-image {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            max-width: 80%;
+            text-align: left;
+            position: relative;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #ff6f61; /* Coral Red */
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #ff6f61; /* Coral Red */
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="navbar">
+            <h2 class="eventmgmt">
+                <a href="homepage.html" class="logo">
+                    SkyEvents <img src="logo.png" alt="Logo">
+                </a>
+            </h2>
+            <ul class="all-links">
+                <li><a href="homepage.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">Services</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="services.html">Corporate Event</a></li>
+                        <li><a href="personalised.html">Personalised Event</a></li>
+                        <li><a href="community_carnival.html">Community Carnival</a></li>
+                        <li><a href="weddingevent.html">Wedding</a></li>
+                    </ul>
+                </li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section>
+        <div class="event-box" onclick="openModal('Street Parade', 'Enjoy the vibrant street parade with colorful floats and lively music.')">
+            <img class="event-image" src="C:\Users\Hannah\Downloads\street parade.jpg" alt="Street Parade">
+            <h2>STREET PARADE</h2>
+            <p>Enjoy the vibrant street parade with colorful floats and lively music.</p>
+        </div>
+
+        <div class="event-box" onclick="openModal('Carnival Games', 'Test your skills at various carnival games and win exciting prizes!')">
+            <img class="event-image" src="C:\Users\Hannah\Downloads\carnival games.jpg" alt="Carnival Games">
+            <h2>CARNIVAL GAMES</h2>
+            <p>Test your skills at various carnival games and win exciting prizes!</p>
+        </div>
+
+        <div class="event-box" onclick="openModal('Food Fiesta', 'Indulge in delicious carnival treats and feast on a variety of cuisines from around the world.')">
+            <img class="event-image" src="C:\Users\Hannah\Downloads\food fiesta.jpg" alt="Food Fiesta">
+            <h2>FOOD FIESTA</h2>
+            <p>Indulge in delicious carnival treats and feast on a variety of cuisines from around the world.</p>
+        </div>
+
+        <div class="event-box" onclick="openModal('Fireworks Spectacular', 'Witness a breathtaking fireworks display lighting up the night sky in dazzling colors!')">
+            <img class="event-image" src="C:\Users\Hannah\Downloads\fireworks.jpg" alt="Fireworks Spectacular">
+            <h2>FIREWORKS SPECTACULAR</h2>
+            <p>Witness a breathtaking fireworks display lighting
+        </div>
+    </section>
+
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Community Carnivals</p>
+    </footer>
+
+    <script>
+        function openModal(title, description) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDescription').innerText = description;
+            document.getElementById('eventModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('eventModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === document.getElementById('eventModal')) {
+                closeModal();
+            }
+        };
+    </script>
+
+</body>
+</html>
